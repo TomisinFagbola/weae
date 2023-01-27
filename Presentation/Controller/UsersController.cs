@@ -58,6 +58,7 @@ namespace API.Controllers
         /// <returns></returns>
         [Authorize(Roles = "Admin")]
         [HttpGet(Name = nameof(GetAllUsers))]
+        [ProducesResponseType(typeof(PagedResponse<ICollection<WeatherDto>>), 200)]
         public async Task<IActionResult> GetAllUsers([FromQuery] UserParameters parameters)
         {
             var result = await _service.UserService.GetUsers(parameters, nameof(GetAllUsers), Url);
